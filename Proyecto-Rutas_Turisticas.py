@@ -116,7 +116,27 @@ def menu_usuario():
             print("Solo digite un numero")
             continue        
 
+def cargar_usuarios():
+    try:
+        with open("usuarios.txt", "r") as archivo:
+            for linea in archivo:
+                datos = linea.strip().split(",")
+                if len(datos) == 6:
+                    usuario = {
+                        "cedula": datos[0],
+                        "nombre": datos[1],
+                        "apellido": datos[2],
+                        "edad": datos[3],
+                        "usuario": datos[4],
+                        "contraseña": datos[5]
+                    }
+                    usuarios.append(usuario)
+    except FileNotFoundError:
+        print("Archivo usuarios.txt no encontrado. Se creará uno nuevo.")
+    return usuarios
+
 def registrar_usuario():
+    usuarios = cargar_usuarios()
     print("\n=== REGISTRO DE USUARIO ===")
     cedula = input("Ingrese su cédula: ")
     for usuario in usuarios:
