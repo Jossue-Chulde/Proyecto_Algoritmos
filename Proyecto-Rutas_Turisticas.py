@@ -136,5 +136,10 @@ def registrar_usuario():
     print("Usuario registrado exitosamente!")
     return nuevo_usuario
 
+def guardar_usuarios(usuarios):
+    with open("usuarios.txt", "w") as archivo:
+        for usuario in usuarios:
+            linea = f"{usuario['cedula']},{usuario['nombre']},{usuario['apellido']},{usuario['edad']},{usuario['usuario']},{usuario['contraseña']}\n"
+            archivo.write(linea)
 # MENU PRINCIPAL
 login()
