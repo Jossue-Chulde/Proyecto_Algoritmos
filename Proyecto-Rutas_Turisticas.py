@@ -24,25 +24,20 @@ Admin_Usuario = "admin@gmail.com"
 Admin_contrasena = "Admin123"
 
 def login():
-    while True:
-        print("\n==== POLI TOURS ====")
-        print("1. Iniciar Sesión")
-        print("2. Registrarse")
-        print("3. Salir del Programa")
-        try:
-            opcion = int(input("Seleccione una Opción: "))
-            if opcion == 1:
-                inicio_de_sesion()
-            elif opcion == 2:
-                registrar_usuario()
-            elif opcion == 3:
-                print("Saliendo del programa")
-                break
-            else:
-                print("Opción no válida")
-        except ValueError:
-            print("Solo digite un numero")
-            continue                
+    print("=== POLI TOURS ===")
+    email = input("Ingrese su correo electronico: ")
+    password = input("Ingrese su contraseña: ")
+
+    usuarios = leer_archivo("usuarios.txt")
+    for usuario in usuarios:
+        datos = usuario.split(",")
+        if len(datos) >= 6 and datos[4] == email and datos[5] == password:
+            print("¡Bienvenido " + datos[0] + "!")
+            return datos
+
+    print("Contraseña o Usuario incorectos vuelva a intentarlo mas tarde")
+    return None #Representa a nada o valor vacio si no se encuentra el usuario
+                 
 
 def inicio_de_sesion():
     print("\n==== INICIO DE SESIÓN ====")
