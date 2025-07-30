@@ -45,6 +45,12 @@ def ordenar_insercion_sort(lista):
         lista[j + 1] = actual
     return lista
 
+def buscar_lineal(lista, valor):
+    for i in range(len(lista)):
+        if valor in lista[i]:
+            return i
+    return -1
+
 def buscar_binaria(lista, valor):
     inicio = 0
     fin = len(lista) - 1
