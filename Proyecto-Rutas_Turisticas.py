@@ -1,3 +1,17 @@
+def leer_archivo(nombre_archivo):
+    with open(nombre_archivo, "r") as archivo:
+        lineas = []
+        for linea in archivo:
+            lineas.append(linea.strip())
+        archivo.close()
+        return lineas
+        
+def escribir_archivo(nombre_archivo, datos):
+    with open(nombre_archivo, "w") as archivo:
+        for dato in datos:
+            archivo.write(dato + "\n")
+        archivo.close()
+
 def ordenar_burbuja(lista):
     n = len(lista)
     for i in range(n):
@@ -63,6 +77,24 @@ def dijkstra(grafo, inicio, fin):
         return None, 0
     return camino, distancias[fin]
 
+def registrar():
+    print("=== REGISTRO ===")
+    nombre = input("Nombre: ")
+    apellido = input("Apellido: ")
+    cedula = input("Cédula: ")
+    edad = input("Edad: ")
+    email = input("Email: ")
+
+    password = input("Contraseña: ")
+    while not validar_contrasena(password):
+        print("Debe tener mayúscula, minúscula y número")
+        password = input("Contraseña: ")
+
+    linea = nombre + "," + apellido + "," + cedula + "," + edad + "," + email + "," + password
+    usuarios = leer_archivo("usuarios.txt")
+    usuarios.append(linea)
+    escribir_archivo("usuarios.txt", usuarios)
+    print("¡Registrado!")
 
 Admin_Usuario = "admin@gmail.com"
 Admin_contrasena = "Admin123"
