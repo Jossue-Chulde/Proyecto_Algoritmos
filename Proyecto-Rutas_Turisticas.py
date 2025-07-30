@@ -174,7 +174,17 @@ def agregar_ruta():
     rutas.append(linea)
     escribir_archivo("rutas.txt", rutas)
     print("La ruta ha sido agregada con exito")
-    
+
+def ver_rutas():
+    print("=== RUTAS ===")
+    rutas = leer_archivo("rutas.txt")
+    rutas_ordenadas = ordenar_burbuja(rutas.copy())
+
+    for ruta in rutas_ordenadas:
+        datos = ruta.split(",")
+        if len(datos) >= 4:
+            print(datos[0] + " -> " + datos[1] + " | $" + datos[3])
+
 def menu_usuario():
     while True:
         print("\n=== Menu Usuario ===")
