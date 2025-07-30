@@ -1,4 +1,10 @@
-usuarios = []
+def ordenar_burbuja(lista):
+    n = len(lista)
+    for i in range(n):
+        for j in range(n - 1):
+            if lista[j] > lista[j + 1]:
+                lista[j], lista[j + 1] = lista[j + 1], lista[j]
+    return lista
 
 Admin_Usuario = "admin@gmail.com"
 Admin_contrasena = "Admin123"
