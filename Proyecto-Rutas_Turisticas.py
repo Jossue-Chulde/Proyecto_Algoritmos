@@ -35,6 +35,16 @@ def ordenar_burbuja(lista):
                 lista[j], lista[j + 1] = lista[j + 1], lista[j]
     return lista
 
+def ordenar_insercion_sort(lista):
+    for i in range(1, len(lista)):
+        actual = lista[i]
+        j = i - 1
+        while j >= 0 and lista[j] > actual:
+            lista[j + 1] = lista[j]
+            j = j - 1
+        lista[j + 1] = actual
+    return lista
+
 def buscar_binaria(lista, valor):
     inicio = 0
     fin = len(lista) - 1
