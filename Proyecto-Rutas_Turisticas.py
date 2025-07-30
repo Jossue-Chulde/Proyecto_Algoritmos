@@ -12,6 +12,21 @@ def escribir_archivo(nombre_archivo, datos):
             archivo.write(dato + "\n")
         archivo.close()
 
+def validar_contrasena(password):
+    mayusculas = False
+    minusculas = False
+    numeros = False
+
+    for char in password:
+        if char >= 'A' and char <= 'Z':
+            mayusculas = True
+        if char >= 'a' and char <= 'z':
+            minusculas = True
+        if char >= '0' and char <= '9':
+            numeros = True
+
+    return mayusculas and minusculas and numeros
+
 def ordenar_burbuja(lista):
     n = len(lista)
     for i in range(n):
@@ -113,27 +128,6 @@ def login():
 
     print("Contraseña o Usuario incorectos vuelva a intentarlo mas tarde")
     return None #Representa a nada o valor vacio si no se encuentra el usuario
-                 
-
-def inicio_de_sesion():
-    print("\n==== INICIO DE SESIÓN ====")
-    usuario = input("Ingrese su correo: ")
-    contrasena = input("Ingrese su contraeña: ")
-
-    if usuario == Admin_Usuario and contrasena == Admin_contrasena:
-        print("--- Incio de Sesión Exitosa ---")
-        print("Bienvenido Administrador")
-        menu_administrador()
-        return "admin"
-
-    for usuario_registrado in usuarios:
-        if usuario_registrado["usuario"] == usuario and usuario_registrado["contraseña"] == contrasena:
-            print("--- Incio de Sesión Exitosa ---")
-            print("Bienvenido Usuario")
-            menu_usuario()
-            return "usuario"
-    print("\nCredenciales Incorrectas")
-    return None
 
 def menu_administrador():
     while True:
