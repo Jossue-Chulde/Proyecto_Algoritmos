@@ -175,50 +175,5 @@ def menu_usuario():
             print("Solo digite un numero")
             continue        
 
-def cargar_usuarios():
-    try:
-        with open("usuarios.txt", "r") as archivo:
-            for linea in archivo:
-                datos = linea.strip().split(",")
-                if len(datos) == 6:
-                    usuario = {
-                        "cedula": datos[0],
-                        "nombre": datos[1],
-                        "apellido": datos[2],
-                        "edad": datos[3],
-                        "usuario": datos[4],
-                        "contraseña": datos[5]
-                    }
-                    usuarios.append(usuario)
-    except FileNotFoundError:
-        print("Archivo usuarios.txt no encontrado. Se creará uno nuevo.")
-    return usuarios
-
-def registrar_usuario():
-    usuarios = cargar_usuarios()
-    print("\n=== REGISTRO DE USUARIO ===")
-    cedula = input("Ingrese su cédula: ")
-    for usuario in usuarios:
-        if usuario["cedula"] == cedula:
-            print("usuario ya registrado")
-            return None
-
-    nombre = input("Ingrese su nombre: ")
-    apellido = input("Ingrese su apellido: ")
-    edad = input("Ingrese su edad: ")
-    usuario = input("Ingrese su email (formato: nombre.apellido@gmail.com): ")
-    contrasena = input("Ingrese su contraseña: ")
-
-    nuevo_usuario = {"cedula": cedula,"nombre": nombre,"apellido": apellido,"edad": edad,"usuario": usuario,"contraseña": contrasena}
-
-    usuarios.append(nuevo_usuario)
-    print("Usuario registrado exitosamente!")
-    return nuevo_usuario
-
-def guardar_usuarios(usuarios):
-    with open("usuarios.txt", "w") as archivo:
-        for usuario in usuarios:
-            linea = f"{usuario['cedula']},{usuario['nombre']},{usuario['apellido']},{usuario['edad']},{usuario['usuario']},{usuario['contraseña']}\n"
-            archivo.write(linea)
 # MENU PRINCIPAL
 login()
