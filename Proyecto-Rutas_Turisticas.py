@@ -6,6 +6,20 @@ def ordenar_burbuja(lista):
                 lista[j], lista[j + 1] = lista[j + 1], lista[j]
     return lista
 
+def buscar_binaria(lista, valor):
+    inicio = 0
+    fin = len(lista) - 1
+
+    while inicio <= fin:
+        medio = (inicio + fin) // 2
+        if valor in lista[medio]:
+            return medio
+        elif lista[medio] < valor:
+            inicio = medio + 1
+        else:
+            fin = medio - 1
+    return -1
+    
 Admin_Usuario = "admin@gmail.com"
 Admin_contrasena = "Admin123"
 
