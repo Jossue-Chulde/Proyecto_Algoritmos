@@ -19,7 +19,51 @@ def buscar_binaria(lista, valor):
         else:
             fin = medio - 1
     return -1
-    
+
+def dijkstra(grafo, inicio, fin):
+    ciudades = list(grafo.keys())
+    distancias = {}
+    padres = {}
+
+    for ciudad in ciudades:
+        distancias[ciudad] = 999999
+        padres[ciudad] = None
+    distancias[inicio] = 0
+
+    visitadas = []
+
+    for _ in range(len(ciudades)):
+        actual = None
+        menor = 999999
+        for ciudad in ciudades:
+            if ciudad not in visitadas and distancias[ciudad] < menor:
+                menor = distancias[ciudad]
+                actual = ciudad
+
+        if actual is None:
+            break
+
+        visitadas.append(actual)
+
+        if actual in grafo:
+            for vecino, costo in grafo[actual].items():
+                nueva_dist = distancias[actual] + costo
+                if nueva_dist < distancias[vecino]:
+                    distancias[vecino] = nueva_dist
+                    padres[vecino] = actual
+
+    camino = []
+    actual = fin
+    while actual is not None:
+        camino.append(actual)
+        actual = padres[actual]
+    camino.reverse()
+
+    if distancias[fin] == 999999:
+        return None, 0
+    return camino, distancias[fin]
+
+
 Admin_Usuario = "admin@gmail.com"
 Admin_contrasena = "Admin123"
 
