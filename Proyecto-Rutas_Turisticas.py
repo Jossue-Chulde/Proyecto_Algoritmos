@@ -199,8 +199,28 @@ def ver_rutas():
     for ruta in rutas_ordenadas:
         datos = ruta.split(",")
         if len(datos) >= 4:
-            print(datos[0] + " -> " + datos[1] + " | $" + datos[3])
+            print(datos[0] + " -> " + datos[1] + " | $" + datos[3]
 
+def buscar_ruta():
+    print("=== BUSCAR ===")
+    ciudad = input("Ciudad: ")
+
+    rutas = leer_archivo("rutas.txt")
+    encontradas = []
+
+    for ruta in rutas:
+        if ciudad in ruta:
+            encontradas.append(ruta)
+
+    if len(encontradas) > 0:
+        print("Encontradas:")
+        for ruta in encontradas:
+            datos = ruta.split(",")
+            if len(datos) >= 4:
+                print(datos[0] + " -> " + datos[1] + " | $" + datos[3])
+    else:
+        print("No encontradas")
+        
 def menu_usuario():
     while True:
         print("\n=== Menu Usuario ===")
