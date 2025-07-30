@@ -166,8 +166,21 @@ def menu_administrador():
                 print("Opción no válida")
         except ValueError:
             print("Solo digite un numero")
-            continue        
+            continue  
+            
+def agregar_ruta():
+    print("=== Rutas del POLI TOURS ===")
+    origen = input("Ruta de origen del viaje: ")
+    destino = input("Ruta de destino del viaje: ")
+    distancia = input("Distancia total del viaje: ")
+    costo = input("Costo del viaje: ")
 
+    linea = origen + "," + destino + "," + distancia + "," + costo
+    rutas = leer_archivo("rutas.txt")
+    rutas.append(linea)
+    escribir_archivo("rutas.txt", rutas)
+    print("La ruta ha sido agregada con exito")
+    
 def menu_usuario():
     while True:
         print("\n=== Menu Usuario ===")
