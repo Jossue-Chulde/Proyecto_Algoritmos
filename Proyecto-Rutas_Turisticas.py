@@ -359,6 +359,37 @@ def ruta_optima():
     else:
         print("No se pudo encontrar una ruta")
 
+def seleccionar_ciudades(mis_ciudades):
+    print("=== SELECCIONAR ===")
+
+    rutas = leer_archivo("rutas.txt")
+    ciudades = []
+
+    for ruta in rutas:
+        datos = ruta.split(",")
+        if len(datos) >= 2:
+            if datos[0] not in ciudades:
+                ciudades.append(datos[0])
+            if datos[1] not in ciudades:
+                ciudades.append(datos[1])
+
+    print("Ciudades disponibles:")
+    for i in range(len(ciudades)):
+        print(str(i + 1) + ". " + ciudades[i])
+
+    while True:
+        ciudad = input("Ciudad a agregar o fin: ")
+        if ciudad == "fin":
+            break
+
+        if ciudad in ciudades and ciudad not in mis_ciudades:
+            mis_ciudades.append(ciudad)
+            print("Agregada: " + ciudad)
+        elif ciudad in mis_ciudades:
+            print("Ya está seleccionada")
+        else:
+            print("No existe")
+
 def guardar_itinerario(usuario, mis_ciudades):
     print("=== GUARDAR ===")
 
