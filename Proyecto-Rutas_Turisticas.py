@@ -297,6 +297,31 @@ def menu_usuario():
             print("Solo digite un numero")
             continue        
 
+def guardar_itinerario(usuario, mis_ciudades):
+    print("=== GUARDAR ===")
+
+    if len(mis_ciudades) == 0:
+        print("No hay ciudades")
+        return
+
+    nombre_archivo = "itinerario-" + usuario[0] + "-" + usuario[1] + ".txt"
+
+    itinerario = []
+    itinerario.append("ITINERARIO DE " + usuario[0] + " " + usuario[1])
+    itinerario.append("Email: " + usuario[4])
+    itinerario.append("=" * 30)
+    itinerario.append("")
+    itinerario.append("CIUDADES:")
+
+    for i in range(len(mis_ciudades)):
+        itinerario.append(str(i + 1) + ". " + mis_ciudades[i])
+
+    itinerario.append("")
+    itinerario.append("Total: " + str(len(mis_ciudades)))
+
+    escribir_archivo(nombre_archivo, itinerario)
+    print("✓ Guardado en: " + nombre_archivo)
+
 def main():
     print("PoliTours")
 
