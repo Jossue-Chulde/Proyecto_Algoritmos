@@ -299,6 +299,24 @@ def menu_usuario():
             print("Solo digite un numero")
             continue        
 
+def ver_ciudades():
+    print("=== CIUDADES TURISTICAS ===")
+    rutas = leer_archivo("rutas.txt")
+    ciudades = []
+
+    for ruta in rutas:
+        datos = ruta.split(",")
+        if len(datos) >= 2:
+            if datos[0] not in ciudades:
+                ciudades.append(datos[0])
+            if datos[1] not in ciudades:
+                ciudades.append(datos[1])
+
+    ciudades_ordenadas = ordenar_insercion_sort(ciudades)
+
+    for i in range(len(ciudades_ordenadas)):
+        print(str(i + 1) + ". " + ciudades_ordenadas[i])
+        
 def guardar_itinerario(usuario, mis_ciudades):
     print("=== GUARDAR ===")
 
