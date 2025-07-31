@@ -348,7 +348,7 @@ def main():
         if opcion == "1":
             usuario = login()
             if usuario and usuario[4] != "admin@politours.com":
-                menu_cliente(usuario)
+                menu_usuario(usuario)
 
         elif opcion == "2":
             registrar()
@@ -357,12 +357,12 @@ def main():
             email = input("Email admin: ")
             password = input("Password admin: ")
             if email == "admin@politours.com" and password == "Admin123":
-                menu_admin()
+                menu_administrador()
             else:
                 print("Datos incorrectos")
 
         elif opcion == "4":
-            print("¡Adiós!")
+            print("Saliendo del sistema")
             break
 
 main()
