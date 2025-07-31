@@ -1,3 +1,5 @@
+import os 
+
 def leer_archivo(nombre_archivo):
     with open(nombre_archivo, "r") as archivo:
         lineas = []
@@ -199,7 +201,7 @@ def ver_rutas():
     for ruta in rutas_ordenadas:
         datos = ruta.split(",")
         if len(datos) >= 4:
-            print(datos[0] + " -> " + datos[1] + " | $" + datos[3]
+            print(datos[0] + " -> " + datos[1] + " | $" + datos[3])
                   
 def buscar_ruta():
     print("=== BUSCAR ===")
