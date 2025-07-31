@@ -297,5 +297,45 @@ def menu_usuario():
             print("Solo digite un numero")
             continue        
 
-# MENU PRINCIPAL
-login()
+def main():
+    print("PoliTours")
+
+    if not os.path.exists("usuarios.txt"):
+        usuarios_iniciales = ["Admin,Sistema,0000000000,30,admin@politours.com,Admin123"]
+        escribir_archivo("usuarios.txt", usuarios_iniciales)
+
+    rutas_iniciales = [
+        "falta"
+    ]
+    escribir_archivo("rutas.txt", rutas_iniciales)
+
+    while True:
+        print("\n=== MENÚ PRINCIPAL ===")
+        print("1. Login Cliente")
+        print("2. Registro")
+        print("3. Login Admin")
+        print("4. Salir")
+
+        opcion = input("Opción: ")
+
+        if opcion == "1":
+            usuario = login()
+            if usuario and usuario[4] != "admin@politours.com":
+                menu_cliente(usuario)
+
+        elif opcion == "2":
+            registrar()
+
+        elif opcion == "3":
+            email = input("Email admin: ")
+            password = input("Password admin: ")
+            if email == "admin@politours.com" and password == "Admin123":
+                menu_admin()
+            else:
+                print("Datos incorrectos")
+
+        elif opcion == "4":
+            print("¡Adiós!")
+            break
+
+main()
