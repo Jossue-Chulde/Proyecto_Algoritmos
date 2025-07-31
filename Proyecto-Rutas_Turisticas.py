@@ -241,7 +241,22 @@ def actualizar_ruta():
             return
 
     print("No encontrada")
-    
+
+def eliminar_ruta():
+    print("=== ELIMINAR ===")
+    origen = input("Origen: ")
+    destino = input("Destino: ")
+
+    rutas = leer_archivo("rutas.txt")
+
+    for i in range(len(rutas)):
+        datos = rutas[i].split(",")
+        if len(datos) >= 4 and datos[0] == origen and datos[1] == destino:
+            rutas.pop(i)
+            escribir_archivo("rutas.txt", rutas)
+            print("¡Eliminada!")
+            return
+            
 def menu_usuario():
     while True:
         print("\n=== Menu Usuario ===")
