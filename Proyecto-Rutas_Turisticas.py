@@ -200,7 +200,7 @@ def ver_rutas():
         datos = ruta.split(",")
         if len(datos) >= 4:
             print(datos[0] + " -> " + datos[1] + " | $" + datos[3]
-
+                  
 def buscar_ruta():
     print("=== BUSCAR ===")
     ciudad = input("Ciudad: ")
@@ -220,7 +220,28 @@ def buscar_ruta():
                 print(datos[0] + " -> " + datos[1] + " | $" + datos[3])
     else:
         print("No encontradas")
-        
+
+def actualizar_ruta():
+    print("=== ACTUALIZAR ===")
+    origen = input("Origen: ")
+    destino = input("Destino: ")
+
+    rutas = leer_archivo("rutas.txt")
+
+    for i in range(len(rutas)):
+        datos = rutas[i].split(",")
+        if len(datos) >= 4 and datos[0] == origen and datos[1] == destino:
+            print("Ruta actual:", rutas[i])
+            nueva_distancia = input("Nueva distancia: ")
+            nuevo_costo = input("Nuevo costo: ")
+
+            rutas[i] = origen + "," + destino + "," + nueva_distancia + "," + nuevo_costo
+            escribir_archivo("rutas.txt", rutas)
+            print("¡Actualizada!")
+            return
+
+    print("No encontrada")
+    
 def menu_usuario():
     while True:
         print("\n=== Menu Usuario ===")
