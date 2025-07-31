@@ -316,7 +316,49 @@ def ver_ciudades():
 
     for i in range(len(ciudades_ordenadas)):
         print(str(i + 1) + ". " + ciudades_ordenadas[i])
-        
+
+def ruta_optima():
+    print("=== RUTA ÓPTIMA ===")
+
+    grafo = {}
+    rutas = leer_archivo("rutas.txt")
+
+    for ruta in rutas:
+        datos = ruta.split(",")
+        if len(datos) >= 4:
+            origen = datos[0]
+            destino = datos[1]
+            costo = float(datos[3])
+
+            if origen not in grafo:
+                grafo[origen] = {}
+            if destino not in grafo:
+                grafo[destino] = {}
+
+            grafo[origen][destino] = costo
+            grafo[destino][origen] = costo
+
+    ciudades = list(grafo.keys())
+    for i in range(len(ciudades)):
+        print(str(i + 1) + ". " + ciudades[i])
+
+    origen = input("Ciudad origen: ")
+    destino = input("Ciudad destino: ")
+
+    camino, costo = dijkstra(grafo, origen, destino)
+
+    if camino:
+        print("Mejor ruta:")
+        ruta_texto = ""
+        for i in range(len(camino)):
+            ruta_texto += camino[i]
+            if i < len(camino) - 1:
+                ruta_texto += " -> "
+        print(ruta_texto)
+        print("Costo: $" + str(costo))
+    else:
+        print("No se pudo encontrar una ruta")
+
 def guardar_itinerario(usuario, mis_ciudades):
     print("=== GUARDAR ===")
 
