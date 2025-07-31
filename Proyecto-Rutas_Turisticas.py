@@ -390,6 +390,20 @@ def seleccionar_ciudades(mis_ciudades):
         else:
             print("No existe")
 
+def ver_seleccion(mis_ciudades):
+    print("=== SELECCION DE USUARIO  ===")
+
+    if len(mis_ciudades) == 0:
+        print("No hay ciudades seleccionadas")
+        return
+    ciudades_ordenadas = ordenar_insercion_sort(mis_ciudades.copy())
+
+    print("Ciudades:")
+    for i in range(len(ciudades_ordenadas)):
+        print(str(i + 1) + ". " + ciudades_ordenadas[i])
+
+    print("Total: " + str(len(mis_ciudades)))
+
 def guardar_itinerario(usuario, mis_ciudades):
     print("=== GUARDAR ===")
 
