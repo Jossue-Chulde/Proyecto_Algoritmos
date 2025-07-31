@@ -256,7 +256,8 @@ def eliminar_ruta():
             escribir_archivo("rutas.txt", rutas)
             print("¡Eliminada!")
             return
-            
+    print("No encontrada")
+    
 def menu_usuario():
     while True:
         print("\n=== Menu Usuario ===")
