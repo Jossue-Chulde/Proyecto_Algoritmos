@@ -412,7 +412,7 @@ def guardar_itinerario(usuario, mis_ciudades):
     itinerario.append("Total: " + str(len(mis_ciudades)))
 
     escribir_archivo(nombre_archivo, itinerario)
-    print("✓ Guardado en: " + nombre_archivo)
+    print("Guardado en: " + nombre_archivo)
 
 def main():
     print("PoliTours")
