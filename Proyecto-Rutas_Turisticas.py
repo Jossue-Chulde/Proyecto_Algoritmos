@@ -257,7 +257,8 @@ def eliminar_ruta():
             return
     print("No encontrada")
     
-def menu_usuario():
+def menu_usuario(usuario):
+    mis_ciudades = []
     while True:
         print("\n=== Menu Usuario ===")
         print("1. Ver mapa de lugares turísticos conectados")
@@ -441,7 +442,7 @@ def main():
         if opcion == "1":
             usuario = login()
             if usuario and usuario[4] != "admin@politours.com":
-                menu_usuario()
+                menu_usuario(usuario)
 
         elif opcion == "2":
             registrar()
