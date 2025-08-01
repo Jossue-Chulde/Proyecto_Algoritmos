@@ -421,14 +421,15 @@ def main():
         usuarios_iniciales = ["Admin,Sistema,0000000000,30,admin@politours.com,Admin123"]
         escribir_archivo("usuarios.txt", usuarios_iniciales)
 
-    rutas_iniciales = [
-            "Quito,Guayaquil,420,45.50",
-            "Quito,Cuenca,465,52.30",
-            "Guayaquil,Cuenca,243,28.75",
-            "Quito,Ambato,178,18.20",
-            "Ambato,Baños,42,5.50"
+    if not os.path.exists("rutas.txt") or os.path.getsize("rutas.txt") == 0:
+        rutas_iniciales = [
+            "Quito,Guayaquil,421,25.5",
+            "Quito,Cuenca,430,28.0",
+            "Guayaquil,Cuenca,197,15.0",
+            "Quito,Ambato,128,10.0",
+            "Ambato,Baños,40,5.0"
         ]
-    escribir_archivo("rutas.txt", rutas_iniciales)
+        escribir_archivo("rutas.txt", rutas_iniciales)
 
     while True:
         print("\n=== MENÚ PRINCIPAL ===")
