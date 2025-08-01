@@ -155,23 +155,20 @@ def menu_administrador():
         print("3. Consultar Ciudad/Punto Turistico")
         print("4. Actualizar Ciudad/Punto Turistico")
         print("5. Eliminar Ciudad/Punto Turistico")
-        print("6. Guardar Ciudad/Punto Turistico")
-        print("7. Salir del Programa")
+        print("6. Salir del Programa")
         try:
             opcion = int(input("Seleccione una Opción: "))
             if opcion == 1:
-                print("Falta")
+                agregar_ruta()
             elif opcion == 2:
-                print("Falta")
+                ver_rutas()
             elif opcion == 3:
-                print("Falta")
+                buscar_ruta()
             elif opcion == 4:
-                print("Falta")
+                actualizar_ruta()
             elif opcion == 5:
-                print("Falta")
+                eliminar_ruta()              
             elif opcion == 6:
-                print("Falta")              
-            elif opcion == 7:
                 print("Saliendo del Menu de Administrador")
                 break
             else:
@@ -265,32 +262,23 @@ def menu_usuario():
         print("\n=== Menu Usuario ===")
         print("1. Ver mapa de lugares turísticos conectados")
         print("2. Consultar la ruta óptima entre dos ciudades/puntos turísticos y el costo")
-        print("3. Explorar Lugares")
-        print("4. Seleccionar Ciudades/Punto Turisticos a visitar")
-        print("5. Listar la o las ciudades/puntos turísticos y el costo total")
-        print("6. Actualizar la o las Ciudades/Punto Turisticos")
-        print("7. Eliminar la o las Ciudades/Punto Turisticos") 
-        print("8. Guardar la selección de Ciudades/Punto Turisticos")
-        print("9. Salir del Programa")
+        print("3. Seleccionar Ciudades/Punto Turisticos a visitar")
+        print("4. Listar la o las ciudades/puntos turísticos y el costo total")
+        print("5. Guardar la selección de Ciudades/Punto Turisticos")
+        print("6. Salir del Programa")
         try:
             opcion = int(input("Seleccione una Opción: "))
             if opcion == 1:
-                print("Falta")
+                ver_ciudades()
             elif opcion == 2:
-                print("Falta")
+                ruta_optima()
             elif opcion == 3:
-                print("Falta")
+                seleccionar_ciudades(mis_ciudades)
             elif opcion == 4:
-                print("Falta")
+                ver_seleccion(mis_ciudades)
             elif opcion == 5:
-                print("Falta")
+                guardar_itinerario(usuario, mis_ciudades)
             elif opcion == 6:
-                print("Falta")
-            elif opcion == 7:
-                print("Falta")
-            elif opcion == 8:
-                print("Falta")      
-            elif opcion == 9:
                 print("Saliendo del Menu de Usuarios")
                 break
             else:
@@ -453,7 +441,7 @@ def main():
         if opcion == "1":
             usuario = login()
             if usuario and usuario[4] != "admin@politours.com":
-                menu_usuario(usuario)
+                menu_usuario()
 
         elif opcion == "2":
             registrar()
