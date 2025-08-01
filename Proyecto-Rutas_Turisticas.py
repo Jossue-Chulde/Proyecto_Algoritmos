@@ -14,6 +14,22 @@ def escribir_archivo(nombre_archivo, datos):
             archivo.write(dato + "\n")
         archivo.close()
 
+def validar_gmail(email):
+    if "@gmail.com" not in email:
+        return False
+
+    partes = email.split("@gmail.com")
+    if len(partes) != 2:
+        return False
+
+    if partes[1] != "":
+        return False
+
+    if partes[0] == "":
+        return False
+
+    return True
+    
 def validar_contrasena(password):
     mayusculas = False
     minusculas = False
@@ -117,6 +133,9 @@ def registrar():
     cedula = input("Cédula: ")
     edad = input("Edad: ")
     email = input("Email: ")
+    while not validar_gmail(email):
+        print("Debe ser un correo de Gmail (@gmail.com)")
+        email = input("Email: ")
 
     password = input("Contraseña: ")
     while not validar_contrasena(password):
