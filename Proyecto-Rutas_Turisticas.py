@@ -63,26 +63,6 @@ def ordenar_insercion_sort(lista):
         lista[j + 1] = actual
     return lista
 
-def buscar_lineal(lista, valor):
-    for i in range(len(lista)):
-        if valor in lista[i]:
-            return i
-    return -1
-
-def buscar_binaria(lista, valor):
-    inicio = 0
-    fin = len(lista) - 1
-
-    while inicio <= fin:
-        medio = (inicio + fin) // 2
-        if valor in lista[medio]:
-            return medio
-        elif lista[medio] < valor:
-            inicio = medio + 1
-        else:
-            fin = medio - 1
-    return -1
-
 def dijkstra(grafo, inicio, fin):
     ciudades = list(grafo.keys())
     distancias = {}
@@ -147,9 +127,6 @@ def registrar():
     usuarios.append(linea)
     escribir_archivo("usuarios.txt", usuarios)
     print("¡Registrado!")
-
-Admin_Usuario = "admin@gmail.com"
-Admin_contrasena = "Admin123"
 
 def login():
     print("=== POLI TOURS ===")
