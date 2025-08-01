@@ -445,8 +445,12 @@ def main():
         escribir_archivo("usuarios.txt", usuarios_iniciales)
 
     rutas_iniciales = [
-        "falta"
-    ]
+            "Quito,Guayaquil,420,45.50",
+            "Quito,Cuenca,465,52.30",
+            "Guayaquil,Cuenca,243,28.75",
+            "Quito,Ambato,178,18.20",
+            "Ambato,Baños,42,5.50"
+        ]
     escribir_archivo("rutas.txt", rutas_iniciales)
 
     while True:
